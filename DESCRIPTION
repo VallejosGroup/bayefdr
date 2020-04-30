@@ -1,0 +1,14 @@
+Package: bayefdr
+Type: Package
+Title: Bayesian estimation and optimisation of expected FDR and expected FNR.
+Version: 0.0.9000
+Date: 2020-04-30
+Authors@R: c(person("Alan", "O'Callaghan", email = "alan.ocallaghan@outlook.com",
+    role = c("aut", "cre")))
+Description:
+    Implements the Bayesian FDR control described by 
+    Newton et al. (2004), <doi.org/10.1093/biostatistics/5.2.155>.
+    Allows optimisation and visualisation of expected error rates based on
+    tail posterior probabilty tests.
+License: GPL-3
+RoxygenNote: 7.1.0
