@@ -14,20 +14,28 @@ efdr_search(
 \arguments{
 \item{probs}{Vector of probabilities.}
 
-\item{target_efdr}{Expected false discovery rate to match.}
+\item{target_efdr}{Numeric scalar specifying the expected false discovery 
+rate to match.}
 
 \item{min_threshold}{Minimum probability threshold. If the optimal 
 probability threshold is below this number, it is rejected and 
 \code{min_threshold} is used instead.}
 
-\item{prob_thresholds}{Probability thresholds to scan with the aim of finding
-the threshold that matches the target EFDR.}
+\item{prob_thresholds}{Vector for probability thresholds to scan,
+with the aim of finding the threshold that matches the target EFDR.}
 }
 \value{
-An object of class "bayefdr" containing the probability
+An object of class "bayefdr" containing the probability thresholds 
+ tested, the EFDR and EFNR at each probability threshold, and the optimal 
+ threshold.
 }
 \description{
 Given a vector of probabilities, this function finds the probability 
 threshold that matches a target expected false discovery rate as closely
 as possible.
+}
+\examples{
+ probs <- runif(100)
+ efdr <- efdr_search(probs, target_efdr = 0.1)
+ plot(efdr)
 }

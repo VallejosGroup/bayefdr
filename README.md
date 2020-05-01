@@ -4,6 +4,9 @@ bayefdr
 =======
 
 <!-- badges: start -->
+
+[![R build
+status](https://github.com/VallejosGroup/bayefdr/workflows/R-CMD-check/badge.svg)](https://github.com/VallejosGroup/bayefdr/actions)
 <!-- badges: end -->
 
 The goal of bayefdr is to provide tools for the estimation and

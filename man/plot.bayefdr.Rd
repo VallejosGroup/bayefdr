@@ -4,10 +4,12 @@
 \alias{plot.bayefdr}
 \title{Plot the EFDR, EFNR grids of a bayefdr object.}
 \usage{
-\method{plot}{bayefdr}(x)
+\method{plot}{bayefdr}(x, ...)
 }
 \arguments{
 \item{x}{An object of class bayefdr.}
+
+\item{...}{Unused.}
 }
 \value{
 A ggplot.

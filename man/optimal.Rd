@@ -15,3 +15,9 @@ The integer index of the optimal probability threshold.
 \description{
 Retrieve the index of the optimal probability threshold.
 }
+\examples{
+ probs <- runif(100)
+ e <- efdr_search(probs, target_efdr = 0.1)
+ optimal(e)
+ e[optimal(e), ]
+}
