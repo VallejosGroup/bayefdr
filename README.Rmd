@@ -46,6 +46,7 @@ probs <- runif(100)
 efdr(0.7, probs)
 efnr(0.7, probs)
 efdr <- efdr_search(probs, target_efdr = 0.1)
+efdr
 ```
 
 The output of this function is a `data.frame` with some extra attributes. There

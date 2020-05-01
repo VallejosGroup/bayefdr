@@ -39,6 +39,9 @@ and a target EFDR.
     efnr(0.7, probs)
     #> [1] 0.3531349
     efdr <- efdr_search(probs, target_efdr = 0.1)
+    efdr
+    #> An object of class 'bayefdr'.
+    #>  Optimal threshold: 0.768 EFDR: 0.0985 EFNR: 0.399
 
 The output of this function is a `data.frame` with some extra
 attributes. There is a plot method too.
