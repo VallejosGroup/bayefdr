@@ -6,19 +6,19 @@
 \usage{
 efdr_search(
   probs,
-  min_threshold = 0.8,
   target_efdr,
+  min_threshold = 2/3,
   prob_thresholds = seq(0.5, 0.9995, by = 0.00025)
 )
 }
 \arguments{
 \item{probs}{Vector of probabilities.}
 
+\item{target_efdr}{Expected false discovery rate to match.}
+
 \item{min_threshold}{Minimum probability threshold. If the optimal 
 probability threshold is below this number, it is rejected and 
 \code{min_threshold} is used instead.}
-
-\item{target_efdr}{Expected false discovery rate to match.}
 
 \item{prob_thresholds}{Probability thresholds to scan with the aim of finding
 the threshold that matches the target EFDR.}
