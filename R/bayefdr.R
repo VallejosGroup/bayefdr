@@ -23,7 +23,7 @@
 efdr_search <- function(
         probs,
         target_efdr,
-        min_threshold = 2 / 3,
+        min_threshold = 0.7,
         prob_thresholds = seq(0.5, 0.9995, by = 0.00025)
     ) {
 
@@ -43,10 +43,10 @@ efdr_search <- function(
         warning("EFDR estimation failed, returning specified min_threshold")
         return(
             bayefdr(
-                1,
-                prob_thresholds = min_threshold,
-                efdr_grid = efdr_grid[[1]],
-                efnr_grid = efnr(min_threshold, probs)
+                which(prob_thresholds == min_threshold),
+                prob_thresholds = prob_thresholds,
+                efdr_grid = efdr_grid,
+                efnr_grid = efnr_grid
             )
         )
     }
@@ -61,10 +61,7 @@ efdr_search <- function(
     }
     if (prob_thresholds[optimal] < min_threshold) {
         ## issue warning and fix to input
-        efdr_grid <- efdr(min_threshold, probs)
-        efnr_grid <- efnr(min_threshold, probs)
-        prob_thresholds <- min_threshold
-        optimal <- 1
+        optimal <- which(prob_thresholds == min_threshold)
         warning(
             "Unable to find a probability threshold that achieves the ",
             "desired EFDR +-0.025. ",
@@ -167,5 +164,3 @@ bayefdr <- function(optimal, prob_thresholds, efdr_grid, efnr_grid) {
 #'  e[optimal(e), ]
 #' @export
 optimal <- function(x) attr(x, "optimal")
-
-
