@@ -7,7 +7,7 @@
 efdr_search(
   probs,
   target_efdr,
-  min_threshold = 2/3,
+  min_threshold = 0.7,
   prob_thresholds = seq(0.5, 0.9995, by = 0.00025)
 )
 }
