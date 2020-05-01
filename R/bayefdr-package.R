@@ -11,6 +11,7 @@
 #' @importFrom reshape2 melt
 #' @importFrom assertthat assert_that
 #' @importFrom stats median
+#' @importFrom utils head
 #' 
 #' @references
 #' Detecting differential gene expression with a semiparametric hierarchical 

@@ -164,3 +164,23 @@ bayefdr <- function(optimal, prob_thresholds, efdr_grid, efnr_grid) {
 #'  e[optimal(e), ]
 #' @export
 optimal <- function(x) attr(x, "optimal")
+
+#' Print methods for bayefdr objects.
+#' @param x An object of class bayefdr.
+#' @param ... Unused.
+#' @rdname utils
+#' @export
+print.bayefdr <- function(x, ...) {
+    df <- format(x[optimal(x), ], digits = 3)
+    cat(
+        "An object of class 'bayefdr'.\n",
+        "Optimal threshold:", df$threshold, "EFDR:", df$EFDR, "EFNR:", df$EFNR, 
+        "\n"
+    )
+}
+
+#' @rdname utils
+#' @export
+head.bayefdr <- function(x, ...) {
+    head(as.data.frame(x))
+}
