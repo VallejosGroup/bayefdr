@@ -20,19 +20,17 @@ efdr_search <- function(
         prob_thresholds = seq(0.5, 0.9995, by = 0.00025)
     ) {
     
-    efdr_grid <- ef_r_scan(probs, type = "efdr", 
-        prob_thresholds = prob_thresholds)
-    efnr_grid <- ef_r_scan(probs, type = "efnr",
-        prob_thresholds = prob_thresholds)
+    efdr_grid <- scan(probs, type = "efdr", prob_thresholds = prob_thresholds)
+    efnr_grid <- scan(probs, type = "efnr", prob_thresholds = prob_thresholds)
     
     if (all(is.na(efdr_grid))) {
-        warning("EFDR estimation failed! Returning specified target_efdr")
+        warning("EFDR estimation failed, returning specified min_threshold")
         return(
             bayefdr(
                 1,
-                prob_thresholds = threshold,
-                efdr_grid[[1]],
-                efnr(threshold, probs)
+                prob_thresholds = min_threshold,
+                efdr_grid = efdr_grid[[1]],
+                efnr_grid = efnr(min_threshold, probs)
             )
         )
     }
@@ -54,7 +52,8 @@ efdr_search <- function(
         optimal <- 1
         warning(
             "Unable to find a probability threshold that achieves the",
-            "desired EFDR +-0.025."
+            "desired EFDR +-0.025.",
+            "Returning specified min_threshold."
         )
     }
     optimal_threshold <- bayefdr(
@@ -106,7 +105,7 @@ efnr <- function(evidence_threshold, probs) {
         sum(evidence_threshold >= probs)
 }
 
-ef_r_scan <- function(
+scan <- function(
         probs,
         type = c("efdr", "efnr"),
         prob_thresholds
@@ -132,6 +131,11 @@ bayefdr <- function(optimal, prob_thresholds, efdr_grid, efnr_grid) {
         class = c("bayefdr", "data.frame")
     )
 }
+
+#' Retrieve the index of the optimal probability threshold.
+#' @param x An object of class "bayefdr".
+#' @return The integer index of the optimal probability threshold.
+#' @export
 optimal <- function(x) attr(x, "optimal")
 
 
