@@ -5,6 +5,7 @@ output: md_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
+set.seed(42)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -31,13 +32,26 @@ install.packages("bayefdr")
 devtools::install_github("bayefdr")
 ```
 
-## Example
+## Usage
 
-The basic input to this function is a vector of probabilities and a target FDR.
+The main functions in this package are `efdr`, `efnr` and `efdr_search`.
+`efdr` and `efnr` calculate the EFDR or EFNR for a vector of probabilities
+given a specified probability threshold. `efdr_search` finds the probability
+threshold that matches a target EFDR as closely as possible.
+The basic input to this function is a vector of probabilities and a target EFDR.
 
 ```{r example}
-library(bayefdr)
+library("bayefdr")
 probs <- runif(100)
+efdr(0.7, probs)
+efnr(0.7, probs)
 efdr <- efdr_search(probs, target_efdr = 0.1)
+```
+
+The output of this function is a `data.frame` with some extra attributes. There
+is a plot method too.
+
+```{r outputs}
+head(efdr)
 plot(efdr)
 ```
