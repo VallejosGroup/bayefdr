@@ -14,4 +14,7 @@ Description:
     Allows optimisation and visualisation of expected error rates based on
     tail posterior probabilty tests.
 License: GPL-3
+Imports: 
+    ggplot2,
+    reshape2
 RoxygenNote: 7.1.0

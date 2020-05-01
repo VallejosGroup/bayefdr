@@ -70,26 +70,24 @@ efdr_search <- function(
 #' @export
 plot.bayefdr <- function(x) {
     mdf <- reshape2::melt(x, measure.vars = c("EFDR", "EFNR"))
-    ggplot(mdf,
-        aes_string(x = "threshold", y = "value", color = "variable")
+    ggplot2::ggplot(mdf, 
+        ggplot2::aes_string(x = "threshold", y = "value", color = "variable")
     ) +
-        geom_line(na.rm = TRUE) +
-        labs(
-            x = "Probability threshold",
-            y = "Error rate"
-        ) +
-        ylim(0:1) +
-        scale_color_brewer(name = "", palette = "Set2") +
-        geom_hline(
-            aes(
+        ggplot2::geom_line(na.rm = TRUE) +
+        ggplot2::labs(x = "Probability threshold",
+                      y = "Error rate") +
+        ggplot2::ylim(0:1) +
+        ggplot2::scale_color_brewer(name = "", palette = "Set2") +
+        ggplot2::geom_hline(
+            ggplot2::aes(
                 yintercept = x[optimal(x), "EFDR"],
                 colour = "Selected\nEFDR"
             ),
             linetype = 2,
             na.rm = TRUE
         ) +
-        geom_vline(
-            aes(xintercept = x[optimal(x), "threshold"],
+        ggplot2::geom_vline(
+            ggplot2::aes(xintercept = x[optimal(x), "threshold"],
                 colour = "Probability\nthreshold"
             )
         )
