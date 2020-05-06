@@ -33,7 +33,8 @@ efdr_search <- function(
         min_threshold > 0.5,
         min_threshold < 1,
         all(prob_thresholds >= 0.5),
-        all(prob_thresholds < 1)
+        all(prob_thresholds < 1),
+        min_threshold %in% prob_thresholds
     )
 
     efdr_grid <- scan(probs, type = "efdr", prob_thresholds = prob_thresholds)
