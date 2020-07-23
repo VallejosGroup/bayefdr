@@ -24,6 +24,7 @@ Imports:
     utils,
     stats
 License: GPL-3
+BugReports: https://github.com/VallejosGroup/bayefdr/issues
 RoxygenNote: 7.1.0
 Encoding: UTF-8
 Suggests: 
