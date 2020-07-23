@@ -4,7 +4,18 @@ name: R-CMD-check
 
 jobs:
   R-CMD-check:
-    runs-on: macOS-latest
+    runs-on: ${{ matrix.config.os }}
+    container: ${{ matrix.config.image }}
+
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }} - ${{ matrix.config.image }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { os: windows-latest, r: 'release'}
+          - { os: macOS-latest, r: 'release'}
+          - { os: ubuntu-latest, r: 'release'}
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
