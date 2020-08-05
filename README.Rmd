@@ -31,7 +31,8 @@ You can install the released version of bayefdr from [CRAN](https://CRAN.R-proje
 
 ``` r
 install.packages("bayefdr")
-devtools::install_github("bayefdr")
+# development version:
+## devtools::install_github("bayefdr")
 ```
 
 ## Usage
@@ -44,6 +45,7 @@ The basic input to this function is a vector of probabilities and a target EFDR.
 
 ```{r example}
 library("bayefdr")
+set.seed(42)
 probs <- runif(100)
 efdr(0.7, probs)
 efnr(0.7, probs)
