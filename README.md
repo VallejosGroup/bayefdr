@@ -7,6 +7,8 @@ bayefdr
 
 [![R build
 status](https://github.com/VallejosGroup/bayefdr/workflows/R-CMD-check/badge.svg)](https://github.com/VallejosGroup/bayefdr/actions)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/bayefdr)](https://CRAN.R-project.org/package=bayefdr)
 <!-- badges: end -->
 
 The goal of bayefdr is to provide tools for the estimation and

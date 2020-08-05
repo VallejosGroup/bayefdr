@@ -3,3 +3,4 @@
 .Rproj*
 ^.*.tar.gz
 ^.*.Rcheck
+Makefile
