@@ -24,7 +24,7 @@ You can install the released version of bayefdr from
 
     install.packages("bayefdr")
     # development version:
-    ## devtools::install_github("bayefdr")
+    ## devtools::install_github("VallejosGroup/bayefdr")
 
 Usage
 -----
