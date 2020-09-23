@@ -29,4 +29,5 @@ BugReports: https://github.com/VallejosGroup/bayefdr/issues
 RoxygenNote: 7.1.1
 Encoding: UTF-8
 Suggests: 
-    testthat
+    testthat,
+    pkgdown
