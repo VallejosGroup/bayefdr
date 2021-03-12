@@ -4,3 +4,4 @@
 ^.*.tar.gz
 ^.*.Rcheck
 Makefile
+^CRAN-RELEASE$

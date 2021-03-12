@@ -42,7 +42,15 @@ efdr_search <- function(
     efdr_grid <- scan(probs, type = "efdr", prob_thresholds = prob_thresholds)
     efnr_grid <- scan(probs, type = "efnr", prob_thresholds = prob_thresholds)
 
-    if (all(is.na(efdr_grid) | is.na(efnr_grid))) {
+    abs_diff <- abs(efdr_grid - target_efdr)
+    ind_opt <- which.min(abs_diff)
+    efdr_opt <- efdr_grid[ind_opt]
+    efnr_opt <- efnr_grid[ind_opt]
+    optimal <- which(efdr_grid == efdr_opt & efnr_grid == efnr_opt)
+    if (length(optimal) > 1) {
+        optimal <- median(round(median(optimal)))
+    }
+    if (length(optimal) == 0) {
         message("EFDR estimation failed, returning specified min_threshold")
         return(
             bayefdr(
@@ -52,15 +60,6 @@ efdr_search <- function(
                 efnr_grid = efnr_grid
             )
         )
-    }
-
-    abs_diff <- abs(efdr_grid - target_efdr)
-    ind_opt <- which.min(abs_diff)
-    efdr_opt <- efdr_grid[ind_opt]
-    efnr_opt <- efnr_grid[ind_opt]
-    optimal <- which(efdr_grid == efdr_opt & efnr_grid == efnr_opt)
-    if (length(optimal) > 1) {
-        optimal <- median(round(median(optimal)))
     }
     if (prob_thresholds[optimal] < min_threshold) {
         ## issue warning and fix to input

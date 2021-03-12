@@ -1,7 +1,7 @@
 Package: bayefdr
 Type: Package
 Title: Bayesian Estimation and Optimisation of Expected False Discovery Rate
-Version: 0.1.1
+Version: 0.1.2
 Date: 2021-03-12
 Authors@R: c(
         person("Alan", "O'Callaghan",
