@@ -33,24 +33,14 @@ efdr_search <- function(
         min_threshold > 0.5,
         min_threshold < 1,
         all(prob_thresholds >= 0.5),
-        all(prob_thresholds < 1),
-        min_threshold %in% prob_thresholds
+        all(prob_thresholds < 1)
     )
+    if (!min_threshold %in% prob_thresholds) {
+        prob_thresholds <- sort(c(min_threshold, prob_thresholds))
+    }
 
     efdr_grid <- scan(probs, type = "efdr", prob_thresholds = prob_thresholds)
     efnr_grid <- scan(probs, type = "efnr", prob_thresholds = prob_thresholds)
-
-    if (all(is.na(efdr_grid))) {
-        warning("EFDR estimation failed, returning specified min_threshold")
-        return(
-            bayefdr(
-                which(prob_thresholds == min_threshold),
-                prob_thresholds = prob_thresholds,
-                efdr_grid = efdr_grid,
-                efnr_grid = efnr_grid
-            )
-        )
-    }
 
     abs_diff <- abs(efdr_grid - target_efdr)
     ind_opt <- which.min(abs_diff)
@@ -60,10 +50,21 @@ efdr_search <- function(
     if (length(optimal) > 1) {
         optimal <- median(round(median(optimal)))
     }
+    if (length(optimal) == 0) {
+        message("EFDR estimation failed, returning specified min_threshold")
+        return(
+            bayefdr(
+                which(prob_thresholds == min_threshold),
+                prob_thresholds = prob_thresholds,
+                efdr_grid = efdr_grid,
+                efnr_grid = efnr_grid
+            )
+        )
+    }
     if (prob_thresholds[optimal] < min_threshold) {
         ## issue warning and fix to input
         optimal <- which(prob_thresholds == min_threshold)
-        warning(
+        message(
             "Unable to find a probability threshold that achieves the ",
             "desired EFDR +-0.025. ",
             "Returning specified min_threshold."
@@ -84,12 +85,9 @@ efdr_search <- function(
 #' @export
 plot.bayefdr <- function(x, ...) {
     mdf <- melt(x, measure.vars = c("EFDR", "EFNR"))
-    ggplot(mdf, 
-        aes_string(x = "threshold", y = "value", colour = "variable")
-    ) +
+    ggplot(mdf, aes_string(x = "threshold", y = "value", colour = "variable")) +
         geom_line(na.rm = TRUE) +
-        labs(x = "Probability threshold",
-                      y = "Error rate") +
+        labs(x = "Probability threshold", y = "Error rate") +
         ylim(0:1) +
         scale_colour_brewer(name = "", palette = "Set2") +
         geom_hline(

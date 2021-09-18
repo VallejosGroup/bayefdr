@@ -42,3 +42,10 @@ test_that("optimal", {
     expect_equal(round(e[optimal(e), "EFDR"], digits = 3), 0.099)
     expect_equal(round(e[optimal(e), "EFNR"], digits = 3), 0.399)
 })
+
+test_that("NaN handling", {
+    expect_error(efdr_search(rep(1, 10), target_efdr=0.1), NA)
+    expect_error(efdr_search(c(0.8, 0.8, 1.0, 1.0, 0.8), target_efdr=0.1), NA)
+})
+
+
