@@ -1,8 +1,8 @@
 Package: bayefdr
 Type: Package
 Title: Bayesian Estimation and Optimisation of Expected False Discovery Rate
-Version: 0.1.0
-Date: 2020-07-24
+Version: 0.2.0
+Date: 2021-09-18
 Authors@R: c(
         person("Alan", "O'Callaghan",
             email = "alan.ocallaghan@outlook.com",
@@ -23,10 +23,12 @@ Imports:
     reshape2,
     assertthat,
     utils,
+    cowplot,
+    ggExtra,
     stats
 License: GPL-3
 BugReports: https://github.com/VallejosGroup/bayefdr/issues
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Encoding: UTF-8
 Suggests: 
     testthat,

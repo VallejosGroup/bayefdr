@@ -5,9 +5,12 @@
 #' @docType package
 #' @name bayefdr-package
 #' @aliases bayefdr
-#' @importFrom ggplot2 ggplot aes_string 
-#'  geom_line geom_hline labs ylim xlim scale_colour_brewer
-#'  aes geom_vline
+#' @importFrom ggplot2 
+#'  ggplot aes_string
+#'  geom_line geom_hline geom_vline geom_segment
+#'  geom_point
+#'  labs ylim xlim scale_colour_brewer scale_y_continuous scale_color_brewer
+#'  aes 
 #' @importFrom reshape2 melt
 #' @importFrom assertthat assert_that
 #' @importFrom stats median
