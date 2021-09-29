@@ -117,7 +117,7 @@
     <p>Plot the cumulative median, mean, and 95% high posterior density region.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cumplot</span><span class='op'>(</span><span class='va'>x</span>, burn <span class='op'>=</span> <span class='fl'>0</span>, thin <span class='op'>=</span> <span class='fl'>1</span>, hpd_level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>cumplot</span><span class='op'>(</span><span class='va'>x</span>, ylab <span class='op'>=</span> <span class='cn'>NULL</span>, burn <span class='op'>=</span> <span class='fl'>0</span>, thin <span class='op'>=</span> <span class='fl'>1</span>, hpd_level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -125,6 +125,10 @@
     <tr>
       <th>x</th>
       <td><p>An vector of MCMC draws.</p></td>
+    </tr>
+    <tr>
+      <th>ylab</th>
+      <td><p>An optional y-axis label.</p></td>
     </tr>
     <tr>
       <th>burn</th>
