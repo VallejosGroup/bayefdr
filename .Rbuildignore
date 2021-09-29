@@ -9,3 +9,4 @@ Makefile
 ^pkgdown$
 .vscode
 ^CRAN-RELEASE$
+^cran-comments\.md$
