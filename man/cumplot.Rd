@@ -4,10 +4,12 @@
 \alias{cumplot}
 \title{Plot the cumulative median, mean, and 95\% high posterior density region.}
 \usage{
-cumplot(x, burn = 0, thin = 1, hpd_level = 0.95)
+cumplot(x, ylab = NULL, burn = 0, thin = 1, hpd_level = 0.95)
 }
 \arguments{
 \item{x}{An vector of MCMC draws.}
+
+\item{ylab}{An optional y-axis label.}
 
 \item{burn}{Integer specifying the number of initial iterations to be
 discarded.}

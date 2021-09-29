@@ -33,3 +33,4 @@ Encoding: UTF-8
 Suggests: 
     testthat,
     pkgdown
+Language: en-gb
